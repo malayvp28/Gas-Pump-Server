@@ -1,0 +1,13 @@
+.menu-icon {
+    visibility: hidden;
+}
+.userName {
+    font-size: 12pt;
+    margin-left: 5pt;
+}
+
+@media only screen and (max-width: 600px) {
+    .menu-icon {
+        visibility: visible;
+    }
+}
