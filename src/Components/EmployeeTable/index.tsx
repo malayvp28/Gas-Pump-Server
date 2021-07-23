@@ -99,7 +99,6 @@ function EmployeeTable({ deleteData, row }: any) {
             admin_id: localStorage.getItem(userInfo.id),
             employee_id: id,
         };
-       
     };
     return (
         <div>
