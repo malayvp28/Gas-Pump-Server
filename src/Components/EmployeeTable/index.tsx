@@ -99,7 +99,7 @@ function EmployeeTable({ deleteData, row }: any) {
             admin_id: localStorage.getItem(userInfo.id),
             employee_id: id,
         };
-        axios.post(apiUrl.deleteEmployee, data).then((res: any) => {});
+       
     };
     return (
         <div>
