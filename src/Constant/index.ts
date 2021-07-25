@@ -15,7 +15,7 @@ export const customerPath = "/admin/customer";
 export const queryPath = "/admin/query";
 export const publicQueryPath = "/query";
 
-export const APP_NAME = "YoloService";
+export const APP_NAME = "Perfect Services";
 
 export class URLS {
     Adminlogin = `${baseURL}admin/login`;

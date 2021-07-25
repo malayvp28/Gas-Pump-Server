@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
+import { APP_NAME } from "Constant";
 import SignIn from "../../Components/SignIn";
 import StickyFooter from "../../Components/Footer";
 
@@ -37,7 +38,7 @@ function HomePage() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        Yolo Service
+                        {APP_NAME}
                     </Typography>
                 </Toolbar>
             </AppBar>
