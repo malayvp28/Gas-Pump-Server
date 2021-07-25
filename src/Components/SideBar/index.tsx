@@ -15,9 +15,11 @@ import EqualizerIcon from "@material-ui/icons/Equalizer";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
+import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
+import ForumIcon from "@material-ui/icons/Forum";
 import Fade from "@material-ui/core/Fade";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -84,6 +86,7 @@ function Sidebar() {
         localStorage.removeItem(userInfo.name);
         localStorage.removeItem(userInfo.phoneNumber);
         localStorage.removeItem(userInfo.username);
+        localStorage.removeItem(userInfo.id);
         history.push(loginPath);
     };
 
@@ -157,7 +160,14 @@ function Sidebar() {
 
             <div>
                 <List>
-                    <ListItem button onClick={newCustomer}>
+                    <ListItem button onClick={newCustomer} disabled>
+                        <ListItemAvatar>
+                            <Avatar style={{ height: "28pt", width: "28pt" }} />
+                        </ListItemAvatar>
+
+                        <ListItemText primary="Profile" />
+                    </ListItem>
+                    <ListItem button onClick={allCustomer}>
                         <ListItemAvatar>
                             <Avatar>
                                 <DashboardIcon
@@ -165,9 +175,71 @@ function Sidebar() {
                                 />
                             </Avatar>
                         </ListItemAvatar>
+                        <ListItemText primary="Dashboard" />
+                    </ListItem>
+                    <ListItem button onClick={newCustomer}>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <PeopleAltIcon
+                                    style={{ height: "22pt", width: "22pt" }}
+                                />
+                            </Avatar>
+                        </ListItemAvatar>
                         <ListItemText primary="New Customer" />
                     </ListItem>
 
+                    <ListItem button onClick={employee}>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <PeopleAltIcon
+                                    style={{ height: "22pt", width: "22pt" }}
+                                />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Employees" />
+                    </ListItem>
+                    <ListItem button onClick={query}>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <ForumIcon
+                                    style={{ height: "22pt", width: "22pt" }}
+                                />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Queries" />
+                    </ListItem>
+                    <ListItem button onClick={franchise} disabled>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <PeopleAltIcon
+                                    style={{ height: "22pt", width: "22pt" }}
+                                />
+                            </Avatar>
+                        </ListItemAvatar>
+
+                        <ListItemText primary="Franchise" />
+                    </ListItem>
+                    <ListItem button onClick={dealer} disabled>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <PeopleAltIcon
+                                    style={{ height: "22pt", width: "22pt" }}
+                                />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Dealer" />
+                    </ListItem>
+
+                    <ListItem button onClick={statistic} disabled>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <EqualizerIcon
+                                    style={{ height: "22pt", width: "22pt" }}
+                                />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Statistic" />
+                    </ListItem>
                     <ListItem button onClick={handleClickOpen}>
                         <ListItemAvatar>
                             <Avatar>

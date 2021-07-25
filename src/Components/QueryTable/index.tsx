@@ -104,10 +104,13 @@ function QueryTable({ updateStatus, row }: any) {
                             <TableCell className={classes.row} size="small">
                                 <b>Phone Number</b>
                             </TableCell>
+                            <TableCell className={classes.row} size="small">
+                                <b>Date && Time</b>
+                            </TableCell>
                             <TableCell
                                 className={classes.row}
                                 size="small"
-                                width="60%"
+                                width="40%"
                             >
                                 <b>Query</b>
                             </TableCell>
@@ -148,7 +151,13 @@ function QueryTable({ updateStatus, row }: any) {
                                     <TableCell
                                         className={classes.row}
                                         size="small"
-                                        width="60%"
+                                    >
+                                        {data.date}
+                                    </TableCell>
+                                    <TableCell
+                                        className={classes.row}
+                                        size="small"
+                                        width="40%"
                                     >
                                         {data.query}
                                     </TableCell>
