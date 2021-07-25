@@ -7,6 +7,7 @@ import Link from "@material-ui/core/Link";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
+import { CNG_DES } from "Constant";
 
 function Copyright() {
     return (
@@ -51,8 +52,7 @@ export default function StickyFooter() {
                     CNG TESTING
                 </Typography>
                 <Typography variant="h5" component="h2" gutterBottom>
-                    Pin a footer to the bottom of the viewport. The footer will
-                    move as the main element of the page grows.
+                    {CNG_DES}
                 </Typography>
                 <Typography variant="body1">welcome</Typography>
             </Container>

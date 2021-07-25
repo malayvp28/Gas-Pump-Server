@@ -9,6 +9,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import { APP_NAME } from "Constant";
+import PublicQuery from "../PublicQuery";
 import SignIn from "../../Components/SignIn";
 import StickyFooter from "../../Components/Footer";
 
@@ -43,6 +44,7 @@ function HomePage() {
                 </Toolbar>
             </AppBar>
             <SignIn />
+            <PublicQuery />
             <StickyFooter />
         </div>
     );

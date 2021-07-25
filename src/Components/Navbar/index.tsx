@@ -6,23 +6,13 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import {
-    Button,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-    Drawer,
-    ListItemText,
-} from "@material-ui/core";
+import { Button, Drawer } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import ForumIcon from "@material-ui/icons/Forum";
 import ClearIcon from "@material-ui/icons/Clear";
-import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import { useHistory } from "react-router-dom";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
@@ -30,17 +20,11 @@ import AddBoxIcon from "@material-ui/icons/AddBox";
 import {
     allCustomerPath,
     APP_NAME,
-    dealerPath,
-    employeesPath,
-    franchisePath,
-    loginPath,
     newCustomerPath,
-    queryPath,
     statisticPath,
     UserInfo,
 } from "Constant";
 import "./style.css";
-import Dialog from "Components/Modal/Dialog";
 
 const useStyles = makeStyles((theme) => ({
     menuButton: {
@@ -77,63 +61,8 @@ function Navbar() {
     const dashboard = () => {
         history.push(allCustomerPath);
     };
-
-    const allCustomer = () => {
-        history.push(allCustomerPath);
-    };
-    const dealer = () => {
-        history.push(dealerPath);
-    };
-    const franchise = () => {
-        history.push(franchisePath);
-    };
-    const employee = () => {
-        history.push(employeesPath);
-    };
-    const query = () => {
-        history.push(queryPath);
-    };
-    const [dialogOpen, setDialogOpen] = React.useState(true);
-
-    const handleClickOpen = () => {
-        setSideBar(false);
-        setDialogOpen(true);
-    };
-
-    const logout = () => {
-        localStorage.removeItem(userInfo.name);
-        localStorage.removeItem(userInfo.phoneNumber);
-        localStorage.removeItem(userInfo.username);
-        history.push(loginPath);
-    };
-    const handleClose = () => {
-        setDialogOpen(false);
-    };
     return (
         <div>
-            <Dialog
-                open={dialogOpen}
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-                maxWidth="xs"
-                fullWidth
-            >
-                <DialogTitle id="alert-dialog-title">Logout</DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        Are you sure?
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Disagree
-                    </Button>
-                    <Button onClick={logout} color="secondary" autoFocus>
-                        Agree
-                    </Button>
-                </DialogActions>
-            </Dialog>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" color="inherit" aria-label="menu">
@@ -177,16 +106,19 @@ function Navbar() {
                         >
                             <ClearIcon />
                         </Button>
-                        <ListItem button onClick={newCustomer} disabled>
+
+                        <ListItem>
                             <ListItemAvatar>
                                 <Avatar
                                     style={{ height: "28pt", width: "28pt" }}
                                 />
                             </ListItemAvatar>
 
-                            <ListItemText primary="Profile" />
+                            <Button size="small" onClick={newCustomer}>
+                                <span className="menu-btn"> Profile</span>
+                            </Button>
                         </ListItem>
-                        <ListItem button onClick={allCustomer}>
+                        <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
                                     <DashboardIcon
@@ -197,52 +129,19 @@ function Navbar() {
                                     />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary="Dashboard" />
-                        </ListItem>
-                        <ListItem button onClick={newCustomer}>
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <PeopleAltIcon
-                                        style={{
-                                            height: "22pt",
-                                            width: "22pt",
-                                        }}
-                                    />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary="New Customer" />
-                        </ListItem>
 
-                        <ListItem button onClick={employee}>
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <PeopleAltIcon
-                                        style={{
-                                            height: "22pt",
-                                            width: "22pt",
-                                        }}
-                                    />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary="Employees" />
+                            <Button
+                                size="small"
+                                className="menu-btn"
+                                onClick={dashboard}
+                            >
+                                <span className="menu-btn"> Dashboard</span>
+                            </Button>
                         </ListItem>
-                        <ListItem button onClick={query}>
+                        <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
-                                    <ForumIcon
-                                        style={{
-                                            height: "22pt",
-                                            width: "22pt",
-                                        }}
-                                    />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary="Queries" />
-                        </ListItem>
-                        <ListItem button onClick={franchise} disabled>
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <PeopleAltIcon
+                                    <AddBoxIcon
                                         style={{
                                             height: "22pt",
                                             width: "22pt",
@@ -251,23 +150,15 @@ function Navbar() {
                                 </Avatar>
                             </ListItemAvatar>
 
-                            <ListItemText primary="Franchise" />
+                            <Button
+                                size="small"
+                                className="menu-btn"
+                                onClick={newCustomer}
+                            >
+                                <span className="menu-btn"> Add customer</span>
+                            </Button>
                         </ListItem>
-                        <ListItem button onClick={dealer} disabled>
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <PeopleAltIcon
-                                        style={{
-                                            height: "22pt",
-                                            width: "22pt",
-                                        }}
-                                    />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary="Dealer" />
-                        </ListItem>
-
-                        <ListItem button onClick={statistic} disabled>
+                        <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
                                     <EqualizerIcon
@@ -278,18 +169,23 @@ function Navbar() {
                                     />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary="Statistic" />
+                            <Button
+                                size="small"
+                                className="menu-btn"
+                                onClick={statistic}
+                            >
+                                <span className="menu-btn"> Statistic</span>
+                            </Button>
                         </ListItem>
-                        <ListItem button onClick={logout}>
+                        <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
                                     <ExitToAppIcon />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText
-                                primary="Logout"
-                                style={{ color: "red" }}
-                            />
+                            <Button size="small" onClick={newCustomer}>
+                                <span className="logout-btn"> Logout</span>
+                            </Button>
                         </ListItem>
                     </List>
                 </div>

@@ -16,7 +16,13 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import MuiAlert from "@material-ui/lab/Alert";
 import { Snackbar } from "@material-ui/core";
-import { Message, UserInfo, URLS, allCustomerPath } from "../../Constant/index";
+import {
+    Message,
+    UserInfo,
+    URLS,
+    allCustomerPath,
+    newCustomerPath,
+} from "../../Constant/index";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -95,7 +101,7 @@ export default function SignIn() {
 
         axios
             .post(url.Adminlogin, {
-                phoneNumber,
+                phone_number: phoneNumber,
                 password,
             })
             .then((res: any) => {
@@ -103,14 +109,15 @@ export default function SignIn() {
                 if (res.data.message === message.loginSuccessful) {
                     setSuccessToast(true);
                     localStorage.setItem(userInfo.name, res.data.name);
-                    localStorage.setItem(userInfo.username, res.data.username);
-                    localStorage.setItem(userInfo.id, res.data.admin_id);
+
+                    localStorage.setItem(userInfo.id, res.data.employee_id);
+                    localStorage.setItem(userInfo.username, res.data.userName);
                     localStorage.setItem(
                         userInfo.phoneNumber,
                         res.data.phone_number
                     );
                     setTimeout(() => {
-                        history.push(allCustomerPath);
+                        history.push(newCustomerPath);
                     }, 1000);
                 } else setsErrorToast(true);
             });
@@ -161,8 +168,8 @@ export default function SignIn() {
                             id="email"
                             label="Phone Number"
                             name="phoneNumber"
-                            type="number"
                             autoComplete="phoneNumber"
+                            size="small"
                             autoFocus
                             onChange={(e) => {
                                 setPhoneNumber(e.target.value);
@@ -170,12 +177,13 @@ export default function SignIn() {
                         />
                         <TextField
                             variant="outlined"
-                            margin="normal"
                             required
+                            margin="dense"
                             fullWidth
                             name="password"
                             label="Password"
                             type="password"
+                            size="small"
                             id="password"
                             autoComplete="current-password"
                             onChange={(e) => {
@@ -193,11 +201,6 @@ export default function SignIn() {
                         >
                             Sign In
                         </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                Forgot password?
-                            </Grid>
-                        </Grid>
                     </form>
                 </div>
             </Grid>

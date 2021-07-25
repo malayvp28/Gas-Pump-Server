@@ -67,7 +67,7 @@ function NewCustomer() {
     const [contactNo, setContactNo] = React.useState("");
     const [carNo, setCarNo] = React.useState("");
     const [expiryDate, setExpiryDate] = React.useState("");
-    const [pucStatus, setPucStatus] = React.useState("Pending");
+    const [pucStatus, setPucStatus] = React.useState(false);
     const [frontPhoto, setFrontPhoto] = React.useState(null);
     const [frontPhotoData, setfrontPhotoData] = React.useState<any>("");
     const [backPhotoData, setbackPhotoData] = React.useState<any>("");
@@ -78,12 +78,12 @@ function NewCustomer() {
     const [error, setError] = React.useState(false);
     const [formError, setFormError] = React.useState(false);
     const [formErrorMessage, setFormErrorMessage] = React.useState("");
+
+    const [url, seturl] = React.useState("");
     const userInfo = new UserInfo();
     const history = useHistory();
 
     if (localStorage.getItem(userInfo.id) === null) history.push(loginPath);
-    const [url, seturl] = React.useState("");
-
     const frontPhotoHandle = (e: any) => {
         setfrontPhotoStatus(false);
         const reader = new FileReader();
@@ -112,7 +112,7 @@ function NewCustomer() {
         const timeElapsed = Date.now();
         const today = new Date(timeElapsed);
         const customerData: any = {
-            admin: localStorage.getItem(userInfo.username),
+            employee: localStorage.getItem(userInfo.username),
             c: {
                 name: customerName,
                 car_number: carNo,
@@ -127,7 +127,7 @@ function NewCustomer() {
                 puc_status: pucStatus,
                 phone_number: contactNo,
                 dealer: 0,
-                employee: 0,
+                employee: localStorage.getItem(userInfo.id),
                 franchise: 0,
                 vehical_front_photo: frontPhotoData,
                 vehical_back_photo: backPhotoData,
@@ -138,6 +138,7 @@ function NewCustomer() {
         axios.post(apiUrl.newCustomer, customerData).then((res: any) => {
             setResponse(res.data.message);
             setResponseStatus(true);
+
             if (res.data.message !== message.customerSaveSuccessful)
                 setError(true);
         });

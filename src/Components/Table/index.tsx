@@ -12,7 +12,6 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 import ICustomerData from "Interface";
-import { customerInfo } from "Constant";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -80,7 +79,7 @@ function TableData({ row }: any) {
     };
     const handleMore = (id: any) => {
         history.push({
-            pathname: customerInfo,
+            pathname: "/customer",
 
             state: id,
         });
@@ -128,7 +127,7 @@ function TableData({ row }: any) {
                                 (page - 1) * rowsPerPage + rowsPerPage
                             )
                             ?.map((data: ICustomerData) => (
-                                <TableRow key={data.customer_id}>
+                                <TableRow>
                                     <TableCell
                                         component="th"
                                         scope="row"
@@ -155,7 +154,7 @@ function TableData({ row }: any) {
                                         {"Main "}
                                     </TableCell>
                                     <TableCell className={classes.row}>
-                                        {data.puc_status}
+                                        {data.puc_status ? "YES" : "NO"}
                                     </TableCell>
                                     <TableCell className={classes.row}>
                                         <Button
@@ -179,7 +178,7 @@ function TableData({ row }: any) {
             </TableContainer>
             <Pagination
                 style={{ marginTop: "10pt" }}
-                count={Math.ceil(row?.length / rowsPerPage)}
+                count={Math.ceil(row?.length / rowsPerPage) + 1}
                 page={page}
                 onChange={handleChangePage}
                 variant="outlined"

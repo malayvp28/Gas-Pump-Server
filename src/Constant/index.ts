@@ -6,7 +6,6 @@ const baseURL = "http://103.204.189.66:8080/";
 export const newCustomerPath = "/admin/newCustomer";
 export const statisticPath = "/admin/statistic";
 export const allCustomerPath = "/admin/allCustomer";
-export const customerInfo = "/admin/customer";
 export const loginPath = "/";
 export const dealerPath = "/admin/dealer";
 export const employeesPath = "/admin/employee";
@@ -16,9 +15,11 @@ export const queryPath = "/admin/query";
 export const publicQueryPath = "/query";
 
 export const APP_NAME = "Perfect Services";
+export const CNG_DES =
+    "“To give real service you must add something which cannot be bought or measured with money, and that is sincerity and integrity.” – Don Alden Adams, President Watch Tower Bible and Tract Society of Pennsylvania";
 
 export class URLS {
-    Adminlogin = `${baseURL}admin/login`;
+    Adminlogin = `${baseURL}employee/login`;
 
     customerData = `${baseURL}customer/all`;
 
@@ -30,25 +31,23 @@ export class URLS {
 
     deleteEmployee = `${baseURL}employee/delete`;
 
+    addQuery = `${baseURL}query/add`;
+
     getQuery = `${baseURL}query/get`;
 
     updateQuery = `${baseURL}query/update/`;
-
-    updateService = `${baseURL}admin/add/service`;
 }
 export class Message {
     loginSuccessful = "You are Login Successfully";
 
     customerSaveSuccessful = "Customer added successfully.";
-
-    serviceAdd = "Your Service Updated Successfully !!";
 }
 export class UserInfo {
-    name = "name";
+    name = "employee_name";
 
-    username = "username";
+    username = "employee_username";
 
-    phoneNumber = "phone_number";
+    phoneNumber = "employee_phone_number";
 
-    id = "admin_id";
+    id = "employee_id";
 }
