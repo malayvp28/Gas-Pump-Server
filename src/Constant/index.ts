@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const baseURL = "http://localhost:8080/";
+const baseURL = "http://103.204.189.66:8080/";
 
 export const newCustomerPath = "/admin/newCustomer";
 export const statisticPath = "/admin/statistic";
@@ -14,6 +14,8 @@ export const franchisePath = "/admin/franchise";
 export const customerPath = "/admin/customer";
 export const queryPath = "/admin/query";
 export const publicQueryPath = "/query";
+
+export const APP_NAME = "YoloService";
 
 export class URLS {
     Adminlogin = `${baseURL}admin/login`;
